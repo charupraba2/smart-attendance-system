@@ -1,0 +1,40 @@
+graph TD
+  subgraph Frontend
+    A[Streamlit UI (app.py)]
+  end
+
+  subgraph FaceRecognition
+    B[Images: data/student_faces/]
+    C[Encodings loader (utils.load_encodings())]
+    D[Recognizer (utils.recognize_faces())]
+    E[OpenCV / face-recognition libs]
+  end
+
+  subgraph Capture
+    CAM[Webcam]
+    UP[Media Uploads]
+  end
+
+  subgraph Backend_DB
+    DB[SQLite (attendance.db) via database.py]
+  end
+
+  subgraph Services
+    AN[Analytics (analytics.py)]
+    AUTH[Auth & Logs (database.verify_user, log_action)]
+  end
+
+  B --> C
+  C --> A
+  CAM --> A
+  A --> D
+  D --> DB[DB: mark_event_attendance_face / get_event_report]
+  UP --> D
+  DB --> AN
+  A --> DB
+  E --> D
+  A --> AUTH
+  AUTH --> DB
+
+  classDef file fill:#f9f,stroke:#333,stroke-width:1px;
+  class A,C,D,DB,AN file;
