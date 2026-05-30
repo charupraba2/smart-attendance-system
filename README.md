@@ -36,11 +36,17 @@ A Streamlit-based web application for tracking attendance using face recognition
 
 This project can be deployed locally or as a container.
 
+### Streamlit Cloud deployment
+
+- Keep `requirements.txt` in the repo root and add this repository to Streamlit Cloud.
+- Streamlit Cloud will use the `streamlit.toml` file in the repo root.
+- Note: `app.py` uses `cv2.VideoCapture(0)` for a local camera, so the built-in webcam mode will not work on Streamlit Cloud.
+- Use the mobile camera streaming option or provide a network camera URL instead.
+
 ### Local deployment
 
 - Install dependencies with `pip install -r requirements.txt`.
 - Run the app with `streamlit run app.py`.
-- Note: `app.py` uses `cv2.VideoCapture(0)` for a local camera, so a remote cloud deployment may not support live webcam access from the browser.
 
 ### Docker deployment
 
