@@ -31,3 +31,27 @@ A Streamlit-based web application for tracking attendance using face recognition
     ```bash
     streamlit run app.py
     ```
+
+## Deployment
+
+This project can be deployed locally or as a container.
+
+### Local deployment
+
+- Install dependencies with `pip install -r requirements.txt`.
+- Run the app with `streamlit run app.py`.
+- Note: `app.py` uses `cv2.VideoCapture(0)` for a local camera, so a remote cloud deployment may not support live webcam access from the browser.
+
+### Docker deployment
+
+1. Build the image:
+    ```bash
+    docker build -t attendance-system .
+    ```
+2. Run the container:
+    ```bash
+    docker run -p 8501:8501 attendance-system
+    ```
+3. Open `http://localhost:8501` in your browser.
+
+> If you deploy to a cloud host, use the mobile camera streaming option in the app or provide an accessible RTSP/HTTP camera URL instead of relying on a local USB webcam.
