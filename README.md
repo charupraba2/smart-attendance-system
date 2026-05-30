@@ -36,6 +36,17 @@ A Streamlit-based web application for tracking attendance using face recognition
 
 This project can be deployed locally or as a container.
 
+### Railway deployment
+
+- Push your repo to GitHub.
+- Connect your Railway project to the GitHub repository.
+- Set the start command in Railway settings to:
+  ```bash
+  streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
+  ```
+- This binds Streamlit to Railway's dynamic `$PORT` and exposes it on `0.0.0.0` for public access.
+- Use the mobile camera streaming option or provide a network camera URL (Streamlit Cloud cannot access local webcams).
+
 ### Streamlit Cloud deployment
 
 - Keep `requirements.txt` in the repo root and add this repository to Streamlit Cloud.
