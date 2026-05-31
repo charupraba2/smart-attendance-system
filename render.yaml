@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: attendance-system
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8501
